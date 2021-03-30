@@ -1,0 +1,140 @@
+﻿@model SSWProject.Models.Listing
+@using SSWProject.Models
+
+@{
+    ViewBag.Title = "Details";
+}
+@Html.Partial("RealEstateTemp")
+
+<h2>Details</h2>
+
+<div>
+    <h4>Listing</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @if (Model.Files.Any(f => f.ListingID == Model.ListingID && f.FileType == FileType.Listing && f.Status == FileStatus.Approved))
+        {
+            <dt>Images</dt>
+            <dd>
+                <img src="@Model.Files.First(f => f.ListingID == Model.ListingID).PathName"
+                     alt="avatar" style="width:30%;" />
+            </dd>
+        }
+        else
+        {
+            <dt>Images</dt>
+            <dd>
+                <img src="~/images/AvatarUnavail.jpg"
+                     alt="avatar" style="width:30%;" />
+            </dd>
+        }
+
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Customer.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CustomerName)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Municipality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Municipality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.province)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.province)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtherAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SquareFootage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SquareFootage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BedsNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BedsNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BathsNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BathsNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StoriesNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StoriesNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FeaturesSummary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeaturesSummary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HeatingType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HeatingType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesPrice)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ListingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

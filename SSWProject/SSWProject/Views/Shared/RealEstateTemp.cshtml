@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>SollerHome</title>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap"
+          rel="stylesheet" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="~/Content/css/animate.css" />
+
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Content/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css" />
+
+    <link rel="stylesheet" href="~/Content/css/flaticon.css" />
+    <link rel="stylesheet" href="~/Content/css/style.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-dark"
+         id="ftco-navbar">
+        <div class="container">
+            @*<a class="navbar-brand" href='@Url.Action("Index", "Home")'>
+                    <img src='@Url.Content("images/CorpLogo.png")' style="width: 20%; height: 8%;" />
+                </a>*@
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#ftco-nav"
+                    aria-controls="ftco-nav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href='@Url.Action("Index","Home")' class="nav-link">Customer Home Page</a>
+                    </li>
+
+                </ul>
+
+                <ul class="navbar-nav ml-auto navbar-dark ">
+                    <li class="nav-item">
+                        <a class="nav-link " href="@Url.Action("Index","Tasks")">Tasks</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link  dropdown-toggle" data-toggle="dropdown"> Creating </a>
+                        <ul class="dropdown-menu dropdown-menu-right bg-dark">
+                            <li class="dropdown-item">
+                                <a href='@Url.Action("Create","Agents")' class="nav-link text-primary">Agent</a>
+                            </li>
+                            <li class="dropdown-item text-dark">
+                                <a href='@Url.Action("Create","Customers")' class="nav-link text-primary">Customer</a>
+                            </li>
+                            <li class="dropdown-item text-dark">
+                                <a href='@Url.Action("Create","Appointments")' class="nav-link text-primary">Appointment</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link  dropdown-toggle" data-toggle="dropdown"> Uploading </a>
+                        <ul class="dropdown-menu dropdown-menu-right bg-dark">
+                            <li class="dropdown-item">
+                                <a href='@Url.Action("UploadAvatar","UploadFiles")' class="nav-link text-primary">Upload Avatar</a>
+                            </li>
+                            <li class="dropdown-item text-dark">
+                                <a href='@Url.Action("UploadListings","UploadFiles")' class="nav-link text-primary">Upload Listing</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link  dropdown-toggle" data-toggle="dropdown"> Viewing </a>
+                        <ul class="dropdown-menu dropdown-menu-right bg-dark">
+                            <li class="dropdown-item">
+                                <a href='@Url.Action("Index","Agents")' class="nav-link text-primary">Agent</a>
+                            </li>
+                            <li class="dropdown-item text-dark">
+                                <a href='@Url.Action("Index","Customers")' class="nav-link text-primary">Customer</a>
+                            </li>
+                            <li class="dropdown-item text-dark">
+                                <a href='@Url.Action("Index","Contracts")' class="nav-link text-primary">Contract</a>
+                            </li>
+                            <li class="dropdown-item text-dark">
+                                <a href='@Url.Action("Index","Appointments")' class="nav-link text-primary">Appointment</a>
+                            </li>
+                            <li class="dropdown-item text-dark">
+                                <a href='@Url.Action("Index","CustomersSearch")' class="nav-link text-primary">Listings</a>
+                            </li>
+                            <li class="dropdown-item text-dark">
+                                <a href='@Url.Action("Index","ListingContracts")' class="nav-link text-primary">Listing Contracts</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href='@Url.Action("Register","Account")' class="nav-link">Register Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='@Url.Action("Login","Account")' class="nav-link">Sign Out</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>

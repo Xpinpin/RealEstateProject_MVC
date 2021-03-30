@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SSWProject.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+@Html.Partial("RealEstateTemp")
+
+
+<h2>Choose Customers To View Listings</h2>
+
+@using (Html.BeginForm("Index", "CustomersSearch", FormMethod.Get))
+{
+    <label>Customer Number:</label>
+    @Html.TextBox("customerNumber")
+    <br />
+    <label>Name:</label>
+    @Html.TextBox("name")
+    <br />
+    <label>Phone Number:</label>
+    @Html.TextBox("phoneNumber")
+    <br />
+
+    <input type="submit" value="Search" />
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Customer Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="3" style="color:red">No Match Any Records</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var items in Model)
+                {
+                    <tr>
+                        <td><input type="radio" name="customerID" value="@items.ID"/></td>
+                        <td>@items.ID</td>
+                        <td>@items.FirstName</td>
+                        <td>@items.LastName</td>
+                        <td>@items.CellPhoneNumber</td>
+                    </tr>
+                }
+
+
+            }
+        </tbody>
+    </table>
+
+
+}
+@using (Html.BeginForm("Index", "CustomersSearch", FormMethod.Post))
+{
+    <label>Choose a customer to show their listings: </label>
+    <br />
+    @Html.DropDownList("customerID", (SelectList)ViewBag.CusID, "Select a customer")
+    <input type="submit" value="Search" />
+    <br /><b>@ViewBag.ErrorSelect</b>
+}
+
+
+

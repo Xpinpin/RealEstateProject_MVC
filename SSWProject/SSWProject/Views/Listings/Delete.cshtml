@@ -1,0 +1,125 @@
+﻿@model SSWProject.Models.Listing
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Listing</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Municipality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Municipality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.province)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.province)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtherAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SquareFootage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SquareFootage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BedsNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BedsNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BathsNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BathsNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StoriesNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StoriesNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FeaturesSummary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeaturesSummary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HeatingType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HeatingType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SalesPrice)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

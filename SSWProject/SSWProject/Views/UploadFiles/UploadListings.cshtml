@@ -1,0 +1,35 @@
+﻿@model SSWProject.Models.File
+
+@Html.Partial("RealEstateTemp")
+
+@using (Html.BeginForm("UploadListings", "UploadFiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div>
+        @Html.Label("CustomerName:")
+
+
+        @Html.DropDownList("customerId", (SelectList)ViewBag.CustomerName, "Select a customer")
+
+        @Html.Label("Listing Name:")
+
+
+        @Html.DropDownList("listingName", (SelectList)ViewBag.ListingName, "Select a listing")
+
+
+        <br />
+        <b class="text-danger"> @ViewBag.ErrMsg</b> <br />
+        <!-- The below makes a file upload control-->
+        <!-- Name, value, html attributes-->
+        @Html.TextBox("file", "", new { type = "file" })
+
+        <br />
+
+        <input type="submit" value="Save Files" />
+        <br /><b class="text-success"> @ViewBag.Msg</b><b class="text-success">@ViewBag.type</b>
+        <br />
+
+        @Html.ActionLink("Get your files approved", "ValidateFile")
+    </div>
+}
+

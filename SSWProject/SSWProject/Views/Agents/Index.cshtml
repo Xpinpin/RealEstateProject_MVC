@@ -1,0 +1,83 @@
+﻿@model IEnumerable<SSWProject.Models.Agent>
+
+@{
+    ViewBag.Title = "IndexAgent";
+}
+
+@Html.Partial("RealEstateTemp")
+<h2 class="text-center">Agents Listing</h2>
+@*<p>
+    @Html.ActionLink("Create New Agents", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoggedInUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Municipality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Province)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OfficePhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OfficeEmail)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Confirmed)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoggedInUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Municipality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Province)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficePhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficeEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Confirmed)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

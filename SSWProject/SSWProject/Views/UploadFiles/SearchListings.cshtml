@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SSWProject.Models.Listing>
+@{
+    ViewBag.Title = "Index";
+}
+@Html.Partial("RealEstateTemp")
+
+<h2>Choose Listings To Upload Images</h2>
+
+@using (Html.BeginForm("SearchListings", "UploadFiles", FormMethod.Get))
+{
+   
+    <label>Customer Name:</label>
+    @Html.TextBox("agentName")
+    <br />
+
+    <input type="submit" value="Search" />
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Customer's First Name</th>
+                <th>Street Address</th>
+                <th>City</th>
+                <th>Province</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="3" style="color:red">No Match Any Records</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var items in Model)
+                {
+                    <tr>
+                        <td>@items.Customer.FirstName</td>
+                        <td>@items.StreetAddress</td>
+                        <td>@items.Municipality</td>
+                        <td>@items.province</td>
+                    </tr>
+                }
+
+
+            }
+        </tbody>
+    </table>
+
+
+}
+@using (Html.BeginForm("SearchListings", "UploadFiles", FormMethod.Post))
+{
+    <label>Choose a customer to show their listings: </label>
+    <br />
+    @Html.DropDownList("customerListing", (SelectList)ViewBag.ListingCustomer, "Select a customer")
+    <input type="submit" value="Search" />
+    <br /><b>@ViewBag.ErrorSelect</b>
+}
+
+
+

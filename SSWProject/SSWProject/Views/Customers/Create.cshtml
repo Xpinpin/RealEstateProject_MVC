@@ -1,0 +1,133 @@
+﻿@model SSWProject.Models.Customer
+
+@{
+    ViewBag.Title = "CreateCustomer";
+}
+
+@Html.Partial("RealEstateTemp")
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="headerMain">
+        <h2 style="text-align:center;">CREATE CUSTOMER</h2>
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row" style="margin-left:15%; align-content:center;">
+                <div class="col-lg-12 col-xs-12">
+
+                    <div class="breadcrumb col-lg-10 col-md-12 ">
+
+                        <div class="active col-lg-12" style="margin:auto; align-content:stretch;">
+                            <div class="form-horizontal" style="margin-left:10%; padding: 3%">
+                                <h4>Customer Information</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your first name" } })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your middle name (Optional)" } })
+                                        @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your last name" } })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.StreetAddress, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.StreetAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your street address (Ex:95 Mountain Rd)" } })
+                                        @Html.ValidationMessageFor(model => model.StreetAddress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Municipality, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Municipality, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your municipality (Ex:Moncton)" } })
+                                        @Html.ValidationMessageFor(model => model.Municipality, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Province, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        @Html.EnumDropDownListFor(model => model.Province, "--- Please Select Your Province ---", htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Province, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your postal code (Ex:E2H 2G5)" } })
+                                        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CellPhoneNumber, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CellPhoneNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your cell phone" } })
+                                        @Html.ValidationMessageFor(model => model.CellPhoneNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.OfficeEmail, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.OfficeEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter your office email (Ex:username@hostname.com)" } })
+                                        @Html.ValidationMessageFor(model => model.OfficeEmail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Confirmed, htmlAttributes: new { @class = "control-label col-md-8" })
+                                    <div class="col-md-10">
+                                        <div class="checkbox">
+                                            @Html.EditorFor(model => model.Confirmed)
+                                            @Html.ValidationMessageFor(model => model.Confirmed, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn-group-toggle text-primary" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    @Scripts.Render("~/bundles/jqueryval")
+}

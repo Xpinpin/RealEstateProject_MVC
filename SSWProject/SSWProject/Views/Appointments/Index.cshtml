@@ -1,0 +1,111 @@
+﻿@model IEnumerable<SSWProject.Models.Appointment>
+
+@{
+    ViewBag.Title = "Index Appointment";
+}
+
+@Html.Partial("RealEstateTemp")
+@*<p>
+        @Html.ActionLink("Create New Appointments", "Create")
+    </p>*@
+<div id="headerMain">
+    <h2 style="text-align:center;">LISTING OF BOOKINGS</h2>
+</div>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row" style="margin-left:8%; align-content:center; margin-right:6%">
+            <div class="col-lg-12 col-md-12">
+                <div class="breadcrumb margin">
+                    <div class="active col-lg-12">
+                        @using (Html.BeginForm("Index", "Appointments", FormMethod.Post))
+                        {
+                            <div class="text-xl-center" style="font-size: x-large;">
+                                <div class="text-danger">
+                                    <b>
+                                        @Html.Raw(TempData["ErrMessage"])
+                                        @Html.Raw(TempData["Empty"])
+                                    </b>
+                                </div>
+                                <div class="text-success">
+                                    <b>@Html.Raw(TempData["Message"])</b>
+                                </div>
+
+
+
+                            </div>
+                            <div class="text-lg-center">
+                                <label>Agent Name :</label> @Html.TextBox("agent", null, new { @placeholder = "Type Agent Name", @class = "form-input" })
+                                <label>Date :</label>  <input type="date" id="date" name="date">
+                                <input type="submit" value="Search" class="btn btn-success" />
+                            </div>
+                        }
+                  
+                    <table class="table">
+                      
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Agents.AgentName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Customers.CustomerName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Date)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.StartTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EndTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Comment)
+                                </th>
+                                <th></th>
+                            </tr>
+                       
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Agents.AgentName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Customers.CustomerName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StartTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EndTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Comment)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                    </td>
+                                </tr>
+
+                            }
+                       
+                    </table>
+                  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+

@@ -1,0 +1,80 @@
+﻿@model SSWProject.Models.ListingContract
+
+@{
+    ViewBag.Title = "Create";
+}
+@Html.Partial("RealEstateTemp")
+
+<h2>Create Contract for @ViewBag.CustomerName 's Listings</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@ViewBag.ListingAddress</h4>
+        <div style="color:red;font-size:large;">
+            <b>@Html.Raw(ViewBag.ErrMsg)</b>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.AgentId, "Agent Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AgentId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AgentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.TextBoxFor(model => model.ListingId, new { @Value = ViewBag.ListingId, @type = "hidden" })
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.ListingId, "ListingId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ListingId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ListingId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.StartDate, @type = "hidden" } })
+        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.EndDate, @type = "hidden" } })
+
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.StartDate } })
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.EndDate } })
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsSigned, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsSigned)
+                    @Html.ValidationMessageFor(model => model.IsSigned, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back To Listings", "ViewingListingFromCreate")
+</div>

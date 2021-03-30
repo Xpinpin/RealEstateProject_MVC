@@ -1,0 +1,53 @@
+﻿@model SSWProject.Models.File
+
+@Html.Partial("RealEstateTemp")
+
+<h2 class="text-center">Upload Avatar</h2>
+@using (Html.BeginForm("UploadAvatar", "UploadFiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container-fluid" style="margin-left:32%">
+        <div class="row">
+            <div class="breadcrumb col-md-4 ">
+                <div style="margin:1% 0% 0% 20%">
+                    @Html.Label("Agent Name:")
+
+                    @*@Html.DropDownListFor(model => model.GetAgents, new SelectList(Model.GetAgents, "ID", "AgentName"), "--- Please Select Agent ---", htmlAttributes: new { @id="agentId"})*@
+                    @*@Html.DropDownList("agentName", (SelectList)Model.GetAgents, "Select an agent")*@
+                    <select name="agentId" id="agentName">
+                        <option>--- Please Select Agent ---</option>
+                        @if (Model.GetAgents.Count() > 0)
+                        {
+                            foreach (var item in Model.GetAgents)
+                            {
+                                <option value="@item.ID">@item.AgentName</option>
+                            }
+                        }
+                    </select>
+
+                    <br />
+                    <b class="text-danger"> @ViewBag.ErrMsg</b> <br />
+                    <!-- The below makes a file upload control-->
+                    <!-- Name, value, html attributes-->
+                    @Html.TextBox("file", "", new { type = "file" })
+
+                    <br />
+
+                    <input type="submit" value="Save Files" style="margin-top:1%" />
+                    <br /><b class="text-success"> @ViewBag.Msg</b><b class="text-success">@ViewBag.type</b>
+                    <br />
+
+                    @Html.ActionLink("Get your files approved", "ValidateFile")
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@*Search agent name *@
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#agentName").chosen();
+        });
+    </script>
+}

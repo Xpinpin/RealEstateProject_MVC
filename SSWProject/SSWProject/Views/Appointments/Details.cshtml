@@ -1,0 +1,83 @@
+﻿@model SSWProject.Models.Appointment
+
+@{
+    ViewBag.Title = "DetailsAppointment";
+}
+
+@Html.Partial("RealEstateTemp")
+
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row" style="margin-left:15%; align-content:center;">
+            <div class="col-lg-12 col-xs-12">
+
+                <div class="breadcrumb col-lg-10 col-md-12 ">
+
+                    <div class="active col-lg-12" style="margin:auto; align-content:stretch;">
+                        <div class="form-horizontal" style="margin-left:10%; padding: 3%">
+                            <h4>Booking Information</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Agents.FirstName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Agents.FirstName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Customers.FirstName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Customers.FirstName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Date)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Date)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.StartTime)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.StartTime)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.EndTime)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.EndTime)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Comment)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Comment)
+                                </dd>
+
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

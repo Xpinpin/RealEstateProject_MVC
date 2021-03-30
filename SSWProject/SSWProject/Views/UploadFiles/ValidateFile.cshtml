@@ -1,0 +1,33 @@
+﻿
+@model SSWProject.Models.File
+@{
+    ViewBag.Title = "Approve Image File";
+}
+@Html.Partial("RealEstateTemp")
+
+<h2 class="text-center">Approve Image File</h2>
+@using (Html.BeginForm("ValidateFile", "UploadFiles", FormMethod.Post))
+{
+    //name, iEnumerable selectList, string label
+    @*@Html.DropDownList("myList", (SelectList)ViewBag.myList , "Select a File")*@
+    <div class="container-fluid" style="margin-left:25%">
+
+        <div class="breadcrumb col-md-12 col-xl-6 ">
+            <div style="margin:1% 0% 0% 30%">
+                <select name="fileID">
+                    <option value="">--- Please Select Images ---</option>
+                    @foreach (var item in Model.Files)
+                    {
+                        <option value="@item.ID">@item.PathName.Remove(0, 17)</option>
+                    }
+                </select>
+                <input type="submit" value="Display" class="btn btn-primary"/>
+                <br />
+                <b class="text-danger">@ViewBag.ErrMsg</b>
+                <br />
+
+                @Html.ActionLink("Back to Task Page", "Index", "Tasks")
+            </div>
+        </div>
+    </div>
+}

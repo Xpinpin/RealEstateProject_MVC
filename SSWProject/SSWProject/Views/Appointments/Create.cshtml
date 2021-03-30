@@ -1,0 +1,115 @@
+﻿@model SSWProject.Models.Appointment
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@Html.Partial("RealEstateTemp")
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div id="headerMain">
+        <h2 style="text-align:center;">CREATE AN APPOINTMENT</h2>
+    </div>
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row" style="margin-left:15%; align-content:center;">
+                <div class="col-lg-12 col-xs-12">
+
+                    <div class="breadcrumb col-lg-10 col-md-12 ">
+
+                        <div class="active col-lg-12" style="margin:auto; align-content:stretch;">
+                            <div class="form-horizontal" style="margin-left:10%; padding: 3%">
+                                <h4>Booking</h4>
+                                <div style="color:red;font-size:large;">
+                                    <b>@Html.Raw(TempData["ErrMessage"])</b> 
+                                </div>
+                                    <hr />
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.AgentID, "Agent Name", htmlAttributes: new { @class = "control-label col-md-8" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownListFor(model => model.AgentID, new SelectList(Model.GetAgentsList, "ID", "AgentName"), "--- Please Select Agent ---", htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.AgentID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.CustomerID, "Customer Name", htmlAttributes: new { @class = "control-label col-md-8" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownListFor(model => model.CustomerID, new SelectList(Model.GetCustomersList, "ID", "CustomerName"), "--- Please Select Customer ---", htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-8" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "datepicker form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-8" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.EndTime, htmlAttributes: new { @class = "control-label col-md-8" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.EndTime, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.EndTime, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-8" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control", @placeholder = " Enter your comment (optional)" } })
+                                            @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Create" class="btn-group-toggle text-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+<script>
+    $(function () {
+        $("#normalDropDown").chosen();
+    })
+</script>
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Appointments")
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("#normalDropDown").chosen();
+        });
+    </script>
+}

@@ -1,0 +1,51 @@
+﻿@model SSWProject.Models.File
+@{
+    ViewBag.Title = "ApproveFile";
+}
+
+@Html.Partial("RealEstateTemp")
+
+@*<h1>@ViewBag.ErrMsg</h1>*@
+
+@if (String.IsNullOrEmpty(ViewBag.Msg))
+{
+    <h2 class="text-center">File Approval Process</h2>
+    <h3 class="text-center">How does this look?</h3>
+    <div class="container-fluid" style="margin-left:25%">
+
+        <div class="breadcrumb col-md-12 col-xl-6 ">
+            <div style="margin:1% 0% 0% 30%">
+                <img src="~/tempImages/@ViewBag.PathName" alt="@ViewBag.PathName" width="250" height="250" style=" object-fit: cover; border-radius: 50%;"/>
+
+                @using (Html.BeginForm("ApproveFile", "UploadFiles", FormMethod.Post))
+                {
+                    <input type="hidden" name="fileID" value="@ViewBag.FileID" />
+                    <label>Looks Good:</label>
+                    <input type="radio" name="looks" value="good" />
+                    <br />
+                    <label>Look Bad:</label>
+                    <input type="radio" name="looks" value="bad" />
+                    <br />
+
+                    <input type="submit" value="Submit" class="btn btn-success" />
+
+                }
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <div style="color: forestgreen; text-align:center; font-size:x-large">
+        @ViewBag.Msg
+    </div>
+
+}
+<div style="margin:1%;">
+    <!--Link text, action name-->
+    @Html.ActionLink("Back", "ValidateFile")
+    <br />
+    @Html.ActionLink("Tasks Page", "Index", "Tasks")
+</div>
+

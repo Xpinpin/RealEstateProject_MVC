@@ -1,0 +1,107 @@
+﻿@model IEnumerable<SSWProject.Models.Listing>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Html.Partial("RealEstateTemp")
+
+<h2>@ViewBag.CustomerName 's Listings</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Municipality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.province)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SquareFootage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BedsNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BathsNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoriesNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FeaturesSummary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HeatingType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesPrice)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Municipality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.province)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OtherAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SquareFootage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BedsNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BathsNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoriesNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FeaturesSummary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeatingType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesPrice)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ListingID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ListingID }) |
+                @Html.ActionLink("Sign Contract", "SignContract", new { id = item.ListingID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ListingID })
+            </td>
+        </tr>
+    }
+
+</table>
+
